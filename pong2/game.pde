@@ -31,7 +31,7 @@ void game() {
         if ball is below the right paddle, move down
       }
       */
-      if (ballX >= width*0.4) {
+      if (ballX >= width*(0.4-difficulty/10)) {
         if (ballY < blueY) blueY = blueY - height/120;
         if (ballY > blueY) blueY = blueY + height/120;
       }
@@ -62,11 +62,20 @@ void gameClick() {
 //custom functions when mode = GAME =======================
 
 void display() {
-  //ball display ==========================================
-  fill(pink);
-  stroke(white);
+  /*ball display 
+     changes in how the ball is displayed based on difficulty
+     */
+  if (AI == true && ballX > width/2 && difficulty == 1) {
+    noFill();
+    strokeWeight(1);
+    stroke(62,42,36);
+  } else {
+    fill(pink);
+    stroke(white);
+  }
   circle(ballX, ballY, bD);
   //display score board ===================================
+  strokeWeight(3);
   textSize(28);
   fill(red);
   text("Score: " + redScore, width/4,height/12);

@@ -30,7 +30,7 @@ boolean wKey, sKey, upKey, downKey;
 
 //font and image variables =================================
 PFont font;
-PImage optionsLogo, homeLogo;
+PImage optionsLogo, homeLogo, hard, easy;
 
 //sound variables ==========================================
 Minim minim; 
@@ -93,6 +93,8 @@ void setup() {
   font = createFont("dafont.ttf",200);
   optionsLogo = loadImage("options.png");
   homeLogo = loadImage("home.png");
+  hard = loadImage("hard.png");
+  easy = loadImage("easy.png");
   
   //minim sound effect ======================================
   minim = new Minim(this);

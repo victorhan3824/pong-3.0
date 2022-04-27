@@ -9,8 +9,8 @@ void options() {
   textSize(0.04*width);
   text("Difficulty:",width/4,200);
   
-  difficultyButton(width/2,"Normal");
-  difficultyButton(width*0.75,"Difficult");
+  difficultyButton(width/2,"Normal",easy,"Your old default Pong");
+  difficultyButton(width*0.75,"Difficult",hard,"Better bot, poor visibility");
 }
 
 void optionsClick() {
@@ -30,7 +30,7 @@ void optionsClick() {
   } 
 }
 
-void difficultyButton(float x, String t) {
+void difficultyButton(float x, String t, PImage icon, String e) {
   //tactile ====================================================================================================
   if (mouseX > x-0.09375*width && mouseX < x+0.09375*width && mouseY > 200-0.0625*height && mouseY < 200+0.0625*height) {
     fill(red);
@@ -39,8 +39,24 @@ void difficultyButton(float x, String t) {
   }
   
   rect(x,200,0.1875*width,0.125*height);
+  //the icons ===================================================================================================
+  if (difficulty == (x-500)/250) { //being selected
+    //brief descir[ption of the difficulty
+    textSize(12);
+    fill(black);
+    text(e,x,300+0.2*width);
+    //filling in the pink that indicates selections
+    fill(pink);
+  } else {
+    fill(gray);  
+  }
+  //actual drawing of the icons 
+  rect(x,300+0.09375*width,0.2*width,0.2*width);
+  image(icon,x-0.09375*width,300,0.1875*width,0.1875*width);
+  
   //the text ====================================================================================================
   fill(black);
   textSize(0.025*width);
   text(t,x,200);
+  
 }
